@@ -1,0 +1,242 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Inter:wght@300;400;600&display=swap');
+
+:root {
+  --bg-color: #af1112; 
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.8);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  overflow: hidden; 
+  cursor: none; 
+}
+
+a, button {
+  cursor: none; 
+}
+
+#root {
+  width: 100vw;
+  height: 100vh;
+}
+
+/* App container */
+.app-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: var(--bg-color);
+}
+
+/* Canvas Layer */
+.character-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Custom Cursor */
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  background-color: white;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  margin-left: -4px;
+  margin-top: -4px;
+  mix-blend-mode: difference;
+}
+
+.cursor-aura {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 40px;
+  border: 1px solid white;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  margin-left: -20px;
+  margin-top: -20px;
+  mix-blend-mode: difference;
+}
+
+.cursor-hover {
+  transform: scale(1.5) !important;
+  transition: transform 0.2s ease-out;
+}
+
+/* UI Overlay */
+.ui-overlay {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 3rem;
+}
+
+@media (max-width: 768px) {
+  .ui-overlay {
+    padding: 2rem;
+  }
+}
+
+/* Header & Nav */
+.header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.nav-pill {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 0.75rem 2rem;
+  border-radius: 50px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.nav-item {
+  color: white;
+  text-decoration: none;
+  font-size: 0.875rem;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.nav-item:hover {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Hero Content */
+.hero-content {
+  max-width: 340px;
+  margin-bottom: 2rem;
+}
+
+.intro-small {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.25rem;
+  font-weight: 300;
+  margin-bottom: 0.25rem;
+}
+
+.name-title {
+  font-size: 4.5rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 1.5rem;
+  font-family: 'Dancing Script', cursive;
+  text-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  line-height: 1.1;
+}
+
+@media (max-width: 768px) {
+  .name-title {
+    font-size: 3.5rem;
+  }
+}
+
+.intro-desc {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+/* Buttons */
+.button-group {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 50px;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  border: none;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background-color: white;
+  color: var(--bg-color);
+}
+
+.btn-primary:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.btn-secondary {
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Loader */
+.loader-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--bg-color);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loader-text {
+  color: white;
+  font-size: 1.25rem;
+  font-weight: 300;
+  letter-spacing: 0.2em;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}

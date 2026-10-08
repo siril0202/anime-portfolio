@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <video id="vid" controls src="character.mp4" width="800"></video>
+    <div id="info" style="color:white; font-size: 24px;"></div>
+    <script>
+        const vid = document.getElementById('vid');
+        const info = document.getElementById('info');
+        vid.addEventListener('timeupdate', () => {
+            const frame = Math.round(vid.currentTime * 24);
+            info.innerText = `Time: ${vid.currentTime.toFixed(2)}s | Frame: ${frame}`;
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body { background: #333; color: white; font-family: sans-serif; }
+.grid { display: flex; flex-wrap: wrap; }
+.frame { margin: 5px; text-align: center; }
+img { width: 150px; }
+</style>
+</head>
+<body>
+<div class="grid" id="grid"></div>
+<script>
+const grid = document.getElementById('grid');
+for (let i = 0; i < 240; i+=10) {
+    const div = document.createElement('div');
+    div.className = 'frame';
+    div.innerHTML = `<img src="frames/f_${i}.webp" /><div>Frame ${i}</div>`;
+    grid.appendChild(div);
+}
+// Also load the last few frames to see when center starts
+for (let i = 230; i < 240; i++) {
+    const div = document.createElement('div');
+    div.className = 'frame';
+    div.innerHTML = `<img src="frames/f_${i}.webp" /><div>Frame ${i}</div>`;
+    grid.appendChild(div);
+}
+</script>
+</body>
+</html>
